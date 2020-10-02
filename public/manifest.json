@@ -1,0 +1,27 @@
+{
+  "name": "Star Trek Interval Timer",
+  "short_name": "Starship Computer",
+  "lang": "en-US",
+  "start_url": "index.html",
+  "display": "standalone",
+  "theme_color": "#FF9800",
+  "background_color": "#FF9800",
+  "icons": [
+    {
+      "src": "images/64.png",
+      "sizes": "64x64"
+    },
+    {
+      "src": "images/128.png",
+      "sizes": "128x128"
+    },
+    {
+      "src": "images/256.png",
+      "sizes": "256x256"
+    },
+    {
+      "src": "images/512.png",
+      "sizes": "512x512"
+    }
+  ]
+}

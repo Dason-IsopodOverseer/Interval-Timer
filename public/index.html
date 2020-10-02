@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Star Trek Interval Timer" />
+    <meta name="keywords" content="HTML, CSS, JavaScript, Glitch" />
+    <meta name="author" content="Dason Wang" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Star Trek Interval Timer</title>
+
+    <!-- Icons referenced in manifest -->
+    <!--ERASE
+    <link rel="manifest" href="/manifest.json" />
+
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="Star Trek Interval Timer" />
+    <meta name="apple-mobile-web-app-title" content="Starship Computer" />
+    <meta name="theme-color" content="#FF9800" />
+    <meta name="msapplication-navbutton-color" content="#FF9800" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="msapplication-starturl" content="/index.html" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="icon" sizes="384x384" href="images/64x64.png" />
+    <link rel="apple-touch-icon" sizes="64x64" href="images/64.png" />
+    <link rel="icon" sizes="128x128" href="images/128.png" />
+    <link rel="apple-touch-icon" sizes="128x128" href="images/128.png" />
+    <link rel="icon" sizes="256x256" href="images/256x256.png" />
+    <link rel="apple-touch-icon" sizes="256x256" href="images/256.png" />
+    <link rel="icon" sizes="512x512" href="images/512x512.png" />
+    <link rel="apple-touch-icon" sizes="512x512" href="images/512.png" />
+-->
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- import the webpage's javascript file -->
+    <script src="script.js" defer></script>
+
+    <!--Favicon-->
+    <link rel="icon" type="image/icon" href="images/favicon.png" />
+
+    <!--Google Fonts-->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Share&display=swap"
+      rel="stylesheet"
+    />
+
+    <!--Google material icons-->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+
+    <!--Code to make it installeable-->
+    <!--ERASE
+    <script>
+      let deferredPrompt;
+      window.addEventListener("beforeinstallprompt", event => {
+        // Prevent Chrome 67 and earlier from automatically showing the prompt
+        event.preventDefault();
+
+        // Stash the event so it can be triggered later.
+        deferredPrompt = event;
+
+        // Attach the install prompt to a user gesture
+        document
+          .querySelector("#installicon")
+          .addEventListener("click", event => {
+            // Show the prompt
+            deferredPrompt.prompt();
+
+            // Wait for the user to respond to the prompt
+            deferredPrompt.userChoice.then(choiceResult => {
+              if (choiceResult.outcome === "accepted") {
+                console.log("User accepted the A2HS prompt");
+              } else {
+                console.log("User dismissed the A2HS prompt");
+              }
+              deferredPrompt = null;
+            });
+          });
+
+        // Update UI notify the user they can add to home screen
+        document.querySelector("#installicon").style.display = "flex";
+      });
+    </script>
+-->
+  </head>
+  <body onload="start()">
+    <!--My alarms-->
+    <audio class="myAudio" id="alarmaudio" preload="auto">
+      <source src="audio/standard.mp3" type="audio/mpeg" />
+    </audio>
+    <div class="grid-container">
+      <div class="topbar">
+        <div id="iconcontainer">
+          <p id="help" onclick="help()">?</p>
+          <i class="material-icons" id="volumeicon" onclick="volume()"
+            >volume_up</i
+          >
+          <!-- include the Glitch button to show what the webpage is about and
+          to make it easier for folks to view source and remix -->
+          <div class="glitchButton" id="gB"></div>
+          <script src="https://button.glitch.me/button.js" defer></script>
+          <i class="material-icons" id="installicon">get_app</i>
+        </div>
+        <div class="title">
+          <h1 id="t1">
+            <span id="desktopt1">Starship Computer</span
+            ><span id="mobilet1">PADD</span>
+          </h1>
+          <h2 id="t2">
+            <span id="desktopt2">The Interactive Star Trek Interval Timer</span
+            ><span id="mobilet2">Personal Access Display Device</span>
+          </h2>
+          <!-- Since positioning on my title isw absolute, this makes black background responsive. -->
+          <p id="filler"></p>
+        </div>
+      </div>
+      <div class="helppage" id="helppage">
+        <div class="helptext">
+          <p>
+            Welcome to the Star Trek Interval Timer.<br />
+            This application is designed to emulate the appearance of 24th
+            century LCARS and PADD interfaces.<br /><br />
+
+            To operate the timer, you must first set an interval. Your intervals
+            are immediately loggd upon submission.<br />
+            You can select from a plethora of annoying alarms. All alarms will
+            be shut off if you mute this timer. <br />
+          </p>
+        </div>
+        <div class="attrib">
+          The Star Trek franchise belongs to CBS Studios Inc. <br />
+          <i>Star Trek Interval Timer</i> is a fan-made project and is not
+          endorsed, sponsored or affiliated with CBS Studios.
+          <br />
+          Starfleet icon made by
+          <a
+            href="https://www.flaticon.com/authors/pixel-perfect"
+            title="Pixel perfect"
+            >Pixel perfect</a
+          >
+          from
+          <a href="https://www.flaticon.com/" title="Flaticon"
+            >www.flaticon.com</a
+          ><br />
+          Title font <i>'Final Frontier'</i> made by
+          <a href="https://www.fontspace.com/allen-r-walden" title=""
+            >Allen R.Walden</a
+          >
+          from
+          <a href="https://www.fontspace.com/" title="QD">www.fontspace.com</a>
+          <p id="credits">
+            Coded by Dason Wang.
+          </p>
+        </div>
+      </div>
+      <div class="lcars">
+        <div class="topstrip" id="topstrip1"></div>
+        <div class="topstrip" id="topstrip2"></div>
+        <div id="toptext">
+          LCARS&nbsp; LOG
+        </div>
+        <div class="sidestrip" id="sidestrip1"></div>
+        <div class="sidestrip" id="sidestrip2" onclick="setInt()">
+          Set Interval<span class="dspace">&nbsp;&nbsp;</span>
+        </div>
+        <div class="sidestrip" id="sidestrip3" onclick="setAlarm()">
+          Set Alarm<span class="dspace">&nbsp;&nbsp;</span>
+        </div>
+        <div class="sidestrip" id="sidestrip4" onclick="back()">
+          Back to Main<span class="dspace">&nbsp;&nbsp;</span>
+        </div>
+        <div class="main">
+          <div id="timercontainer">
+            <div id="timer">00:00:00</div>
+            <div id="controlbuttons">
+              <!-- I'm too lazy to create button elements with javascript, so here are all my buttons -->
+              <button
+                type="button"
+                class="controlbut"
+                id="startbut"
+                name="startbutton"
+                onclick="begincount()"
+              >
+                Start
+              </button>
+              <button
+                type="button"
+                class="controlbut"
+                id="stopbut"
+                name="stopbutton"
+                onclick="halt()"
+              >
+                Stop
+              </button>
+              <button
+                type="button"
+                class="controlbut"
+                id="clearbut"
+                name="clearbutton"
+                onclick="haltall()"
+              >
+                Clear
+              </button>
+            </div>
+          </div>
+          <div id="intsetcontainer">
+            <!--Time inputs limited to a maximum length of 2 digits.-->
+            <p class="filler2">
+              Hours
+              <input
+                type="number"
+                class="set"
+                id="hrset"
+                name="hrset"
+                oninput="set1()"
+              />
+            </p>
+            <p class="filler2">
+              Minutes
+              <input
+                type="number"
+                class="set"
+                id="minset"
+                name="minset"
+                oninput="set2()"
+              />
+            </p>
+            <p class="filler2" id="filler2last">
+              Seconds
+              <input
+                type="number"
+                class="set"
+                id="secset"
+                name="secset"
+                oninput="set3()"
+              />
+            </p>
+            <p id="intbutcontainer">
+              <button
+                type="button"
+                class="controlbut"
+                id="setbut"
+                name="setbut"
+                onclick="makeitso()"
+              >
+                Make it so
+              </button>
+              <button
+                type="button"
+                class="controlbut"
+                id="resetbut"
+                name="resetbut"
+                onclick="resetint()"
+              >
+                Reset
+              </button>
+              <button
+                type="button"
+                class="controlbut"
+                id="randombut"
+                name="randombut"
+                onclick="randomint()"
+              >
+                Randomize
+              </button>
+            </p>
+          </div>
+          <div id="alarmsetcontainer">
+            <button
+              type="button"
+              class="controlbut"
+              id="0"
+              name="standard"
+              onclick="chooseAlarm(this.id)"
+            >
+              Standard
+            </button>
+            <button
+              type="button"
+              class="controlbut"
+              id="1"
+              name="redalert"
+              onclick="chooseAlarm(this.id)"
+            >
+              Red Alert
+            </button>
+            <button
+              type="button"
+              class="controlbut"
+              id="2"
+              name="Sensors"
+              onclick="chooseAlarm(this.id)"
+            >
+              Sensors
+            </button>
+            <button
+              type="button"
+              class="controlbut"
+              id="3"
+              name="Intercom"
+              onclick="chooseAlarm(this.id)"
+            >
+              Intercom
+            </button>
+            <button
+              type="button"
+              class="controlbut"
+              id="4"
+              name="Khaaan!"
+              onclick="chooseAlarm(this.id)"
+            >
+              Khaaan!
+            </button>
+            <button
+              type="button"
+              class="controlbut"
+              id="5"
+              name="Phaser"
+              onclick="chooseAlarm(this.id)"
+            >
+              Phaser
+            </button>
+            <button
+              type="button"
+              class="controlbut"
+              id="6"
+              name="Ferengi"
+              onclick="chooseAlarm(this.id)"
+            >
+              Ferengi
+            </button>
+            <button
+              type="button"
+              class="controlbut"
+              id="7"
+              name="Borg"
+              onclick="chooseAlarm(this.id)"
+            >
+              Borg
+            </button>
+          </div>
+        </div>
+        <div id="intcontainer"></div>
+        <div class="smallbox" id="elapsedcontainer">
+          Elapsed time:
+          <br/>
+          <span id="elapsed">00:00:00</span>
+        </div>
+        <div class="smallbox" id="totalcontainer">
+          Time left:<br/>
+          <span id="tleft">00:00:00</span>
+        </div>
+      </div>
+    </div>
+    <!--ERASE
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", function() {
+          navigator.serviceWorker
+            .register("service-worker.js")
+            .then(reg => {
+              console.log("Service worker registered! 😎", reg);
+            })
+            .catch(err => {
+              console.log("😥 Service worker registration failed: ", err);
+            });
+        });
+      } else {
+        // happens when the app isn't served over a TLS connection (HTTPS)
+        // or if the browser doesn't support service workers
+        console.warn("Service Worker not available");
+      }
+    </script>
+-->
+  </body>
+</html>

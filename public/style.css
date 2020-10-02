@@ -1,0 +1,710 @@
+/* Css formatted to match appearance of elements from top to bottom of HTML page. 
+If you cannot find an item being styled, look at general placement and you'll have 
+a good idea of where it fits on the page.*/
+
+body {
+  margin: 0;
+  height: 100%;
+  background-color: #111;
+  font-family: helvetica, arial, sans-serif;
+  overflow: hidden;
+}
+
+/* Style the bar containing title and icons */
+.topbar {
+  grid-area: ti;
+}
+
+/* All icons within topbar */
+#help {
+  font-weight: bold;
+  color: #303030;
+  float: left;
+  margin-left: calc(1vw + 2px);
+  margin-top: 2vw;
+  padding: 10px;
+  background-color: white;
+  border-radius: 25px;
+}
+
+#help:hover {
+  background-color: #2e77c4;
+  cursor: pointer;
+}
+
+#volumeicon {
+  color: white;
+  float: left;
+  font-size: 40px;
+  margin-left: calc(1vw + 5px);
+  margin-top: 2vw;
+}
+
+#volumeicon:hover {
+  color: #2e77c4;
+  cursor: pointer;
+}
+
+#gB {
+  display: block;
+  float: right;
+  margin-top: 2vw;
+  margin-right: 10px;
+}
+
+#installicon {
+  color: white;
+  float: right;
+  font-size: 40px;
+  margin-right: calc(1vw + 5px);
+  margin-top: 2vw;
+}
+
+#installicon:hover {
+  color: #2e77c4;
+  cursor: pointer;
+}
+
+.title {
+  font-size: calc(2vw + 22px);
+}
+
+#t1 {
+  position: absolute;
+  top: 0.2%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  font-family: "Share", cursive;
+  font-size: 1.12em;
+  color: dodgerblue;
+  letter-spacing: 1px;
+  padding: 0;
+}
+/* Hide title for mobile and show title for dektop */
+#desktopt1 {
+  display: inline;
+}
+#mobilet1 {
+  display: none;
+}
+
+#t2 {
+  position: absolute;
+  top: calc(2.5vw + 30px);
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  font-family: "Lato", sans-serif;
+  font-size: 0.35em;
+  color: #eee;
+  padding-bottom: 0;
+}
+/* Same thing with subtitles */
+#desktopt2 {
+  display: inline;
+}
+#mobilet2 {
+  display: none;
+}
+
+#filler {
+  height: 5px;
+}
+
+/* Style all Icons and Titles for small screens */
+@media only screen and (max-width: 900px) {
+  /* Restyle ALL icons within topbar */
+  #help {
+    float: right;
+    padding: 5px;
+    margin-right: calc(1vw + 5px);
+    margin-top: calc(2vw + 8px);
+  }
+  #volumeicon {
+    color: white;
+    float: left;
+    font-size: 30px;
+    margin-top: calc(2vw + 8px);
+  }
+  /* Remove glitch icon and reposition install icon*/
+  #gB {
+    display: none;
+  }
+  #installicon {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    background-color: #333;
+    padding: 8px;
+    border-radius: 50%;
+  }
+
+  /* Next up, style my title */
+  #t1 {
+    top: 0%;
+    font-size: 1.2em;
+  }
+  #t2 {
+    top: calc(2vw + 28px);
+    font-size: 0.45em;
+  }
+  /* show mobile titles */
+  #mobilet1 {
+    display: inline;
+  }
+  #desktopt1 {
+    display: none;
+  }
+  #mobilet2 {
+    display: inline;
+  }
+  #desktopt2 {
+    display: none;
+  }
+}
+
+/* Style the help page, whihc explains content to user
+and also credits and attributes stuffs */
+.helppage {
+  display: none;
+  animation: mymove 5s;
+  grid-area: hp;
+  font-family: "lato", sans-serif;
+  background-color: ghostwhite;
+  border-color: dodgerblue;
+  border-style: solid;
+  border-width: 3px;
+  border-radius: 25px;
+  padding: 20px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.helptext {
+  font-size: 1.25em;
+}
+
+.attrib {
+  font-weight: bold;
+}
+
+.attrib a {
+  color: orange;
+}
+#credits {
+  color: dodgerblue;
+}
+
+/* Mobile Help page, just lessn the text size a bit */
+@media only screen and (max-width: 900px) {
+  .helppage {
+    font-size: 0.9em;
+  }
+}
+
+/* Style TNG computer (LCARS) display, which lets user set time intervals. Prepare for
+an ungodly amount of css positioning */
+.lcars {
+  grid-area: l;
+  display: grid;
+  grid-column-gap: 5px;
+  grid-row-gap: 5px;
+  grid-template-columns: 1% 18% auto 15% 8% 3% 1%;
+  grid-template-rows: calc(1vw + 10px) 20% 15% auto 6% 14%;
+  grid-template-areas:
+    ". ss1 ts1 ts1 tt ts2 ."
+    ". ss1 m ic ic ic ."
+    ". ss2 m ic ic ic ."
+    ". ss3 m ic ic ic ."
+    ". ss4 m ic ic ic ."
+    ". ss4 m ec tc tc .";
+  background-color: #111;
+  height: calc(2vw + 370px);
+}
+
+.topstrip {
+  width: 100%;
+  background-color: #FF9104;
+  height: calc(1vw + 10px);
+}
+
+#topstrip1 {
+  grid-area: ts1;
+}
+
+#topstrip2 {
+  grid-area: ts2;
+  border-radius: 0 25px 25px 0;
+}
+
+#toptext {
+  grid-area: tt;
+  display: inline;
+  text-align: center;
+  font-family: "lato", sans-serif;
+  font-weight: bold;
+  font-size: 1.35vw;
+  color: #ffd480;
+}
+
+@media only screen and (min-width: 1500px) {
+  #toptext {
+    font-size: calc(1.1vw + 5px);
+  }
+}
+
+.sidestrip {
+  width: 100%;
+  height: 100%;
+  text-align: right;
+  font-family: "Lato", sans-serif;
+  font-weight: bold;
+  font-size: calc(1vw + 4px);
+}
+
+#sidestrip1 {
+  grid-area: ss1;
+  background-color: LightSteelBlue;
+  border-radius: 50px 0 0 0;
+}
+
+#sidestrip2 {
+  grid-area: ss2;
+  background-color: #ffd480;
+}
+
+#sidestrip2:hover {
+  background-color: #FFE4AD;
+  cursor: pointer;
+}
+
+#sidestrip3 {
+  grid-area: ss3;
+  background-color: #FF9104;
+}
+
+#sidestrip3:hover {
+  background-color: #FFB95E;
+  cursor: pointer;
+}
+
+#sidestrip4 {
+  grid-area: ss4;
+  background-color: LightSteelBlue;
+  border-radius: 0 0 0 40px;
+}
+
+#sidestrip4:hover {
+  background-color: #CDD9EA;
+  cursor: pointer;
+}
+
+/* Style the LCARS log */
+#intcontainer {
+  grid-area: ic;
+  background-color: #222;
+  border-color: #ffd480;
+  border-style: solid;
+  border-width: 2px;
+  padding-left: 15px;
+  padding-top: 10px;
+  overflow-y: scroll;
+  overflow-wrap: break-word;
+}
+
+/* Int styles the individual saved intervals. These appear below lcars logs*/
+.int {
+  font-family: "Source Code Pro", monospace;
+  color: #FF9104;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.inttext {
+  color: #eee;
+  font-size: 0.9em;
+}
+
+/* Elapsed time and total time containers*/
+.smallbox {
+  color: #ffd480;
+  background-color: #222;
+  border-color: #ffd480;
+  border-style: solid;
+  border-width: 2px;
+  font-size: calc(0.4vw + 10px);
+  font-family: "Source Code Pro", monospace;
+  text-align: center;
+}
+
+.smallbox span {
+  font-weight: bold;
+  color: #FF9104;
+  font-size: 1.1em;
+}
+
+#elapsedcontainer {
+  grid-area: ec;
+}
+
+#totalcontainer {
+  grid-area: tc;
+}
+
+/* A custom scroll bar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #ffd480;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #666;
+}
+
+/* And... now we style for the responsive version of lcars... AUGHH */
+@media only screen and (max-width: 900px) {
+  .lcars {
+    grid-area: l;
+    width: 100%;
+    display: grid;
+    grid-column-gap: 1px;
+    grid-row-gap: 1px;
+    grid-template-columns: 0.4% 4% 31% 15.5% 15.5% 31% 1%;
+    grid-template-rows: 9% auto 40% 12%;
+    /* Top strips go to the side, sides go to the top... sad confusion noises! */
+    grid-template-areas:
+      ". ts1 ss2 ss3 ss3 ss4 ."
+      ". ts1 m m m m ."
+      ". ts2 ic ic ic ic ."
+      ". ts2 ec ec tc tc .";
+    height: 350px;
+  }
+  /* make topstrip, which is now on the left, take up all space available. */
+  .topstrip {
+    height: 100%;
+    width: 100%;
+  }
+  /* change colors around */
+  #topstrip1 {
+    background-color: LightSteelBlue;
+    border-radius: 30px 0 0 30px;
+  }
+
+  #topstrip2 {
+    background-color: #ffd480;
+    border-radius: 30px 0 0 30px;
+  }
+
+  /* Onto styling the sidestrips at top */
+  .sidestrip {
+    font-size: calc(1vw + 12px);
+    margin: 0;
+    text-align: center;
+    padding-top: 5px;
+  }
+
+  /* Hide double spaces to truly center text */
+  .dspace {
+    display: none;
+  }
+
+  /*We don't need this anymore, so... */
+  #sidestrip1 {
+    display: none;
+  }
+
+  /* change colors around */
+  #sidestrip2 {
+    background-color: LightSteelBlue;
+  }
+  #sidestrip2:hover {
+    background-color: #CDD9EA;
+  }
+
+  /* Strip 3's color stays exactly the same */
+
+  #sidestrip4 {
+    background-color: #ffd480;
+    border-radius: 0;
+  }
+  #sidestrip4:hover {
+    background-color: #FFE4AD;
+  }
+
+  /*top text will go bye bye */
+  #toptext {
+    display: none;
+  }
+
+  /* Style intervals for mobile */
+  .int {
+    font-size: 1em;
+  }
+  .inttext {
+    font-size: 0.8em;
+  }
+  
+  .smallbox {
+    font-size: calc(1vw + 10px);
+  }
+  .smallbox span{
+    font-size: calc(1vw + 12px);
+  }
+}
+
+/* Style the main control panel which contains the timer, the interval input, and also the red alert alarm*/
+.main {
+  grid-area: m;
+  background-color: #222;
+  border-style: solid;
+  border-width: 3px;
+  border-color: #1d1d1d;
+}
+
+/* Timer and control buttons (stop/star/clear) style */
+#timercontainer {
+  display: block;
+}
+
+/* Timer style */
+#timer {
+  text-align: center;
+  padding-top: 70px;
+  margin: 0;
+  font-size: calc(1vw + 70px);
+  color: #eee;
+}
+
+/* The following styles my start, stop, and clear buttons */
+#controlbuttons {
+  padding-top: 10px;
+  text-align: center;
+}
+
+/* This class styles big buttons */
+.controlbut {
+  margin-right: 15px;
+  border: 0;
+  outline: 0;
+  border-radius: 25px;
+  text-align: center;
+  font-family: "lato", sans-serif;
+  font-size: calc(1vw + 15px);
+  font-weight: bold;
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-bottom: 5px;
+  margin-bottom: 20px;
+}
+
+.controlbut:hover {
+  cursor: pointer;
+}
+
+#startbut {
+  background-color: LightSteelBlue;
+}
+
+#startbut:hover {
+  background-color: #CDD9EA;
+}
+
+#stopbut {
+  background-color: #FF9104;
+}
+
+#stopbut:hover {
+  background-color: #FFB95E;
+}
+
+#clearbut {
+  background-color: #ffd480;
+  margin-right: 0;
+}
+
+#clearbut:hover {
+  background-color: #FFE4AD;
+}
+
+/* Style mobile main */
+@media only screen and (max-width: 900px) {
+  #timer {
+    text-align: center;
+    padding-top: 10px;
+    font-size: 70px;
+  }
+
+  #controlbuttons {
+    padding-top: 4px;
+    margin-bottom: 15px;
+  }
+
+  /* All big user buttons will be reduced in size */
+  .controlbut {
+    margin-right: 10px;
+    border-radius: 20px;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+  }
+}
+
+/* The following styles my add interval panel. This only appears when user clicks on set interval button.*/
+#intsetcontainer {
+  display: none;
+  padding-top: 70px;
+  margin: 0 auto;
+}
+
+.set {
+  outline: none;
+  font-size: calc(0.5vw + 20px);
+  text-align: center;
+  border-style: solid;
+  border-width: 1px;
+  border-color: gray;
+  border-radius: 4px;
+  background-color: #eee;
+  width: 3ch;
+}
+
+.filler2 {
+  font-size: calc(0.5vw + 20px);
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: 0;
+  color: #eee;
+  float: left;
+  margin-right: calc(1vw + 11px);
+}
+
+#filler2last {
+  margin-right: 0;
+}
+
+/* Removes arrows for number input */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* Container for interval setting buttons */
+#intbutcontainer {
+  text-align: center;
+  padding-top: 100px;
+  margin: 0;
+}
+
+/*'makesitso' 'reset' and 'random' are control buttons and have already been styled. Just ned to add color*/
+#setbut {
+  background-color: LightSteelBlue;
+}
+
+#setbut:hover {
+  background-color: #CDD9EA;
+}
+
+#resetbut {
+  background-color: #FF9104;
+}
+
+#resetbut:hover {
+  background-color: #FFB95E;
+}
+
+#randombut {
+  background-color: #ffd480;
+  margin-right: 0;
+}
+
+#randombut:hover {
+  background-color: #FFE4AD;
+}
+
+/* Style mobile intsetcontainer */
+@media only screen and (max-width: 900px) {
+  #intsetcontainer {
+    padding-top: 10px;
+  }
+  .set {
+    font-size: calc(2vw + 10px);
+  }
+  .filler2 {
+    font-size: calc(2vw + 10px);
+  }
+  #intbutcontainer {
+    padding-top: 5px;
+    margin-bottom: 15px;
+  }
+  #intbutcontainer .controlbut {
+    font-size: 1em;
+  }
+}
+
+/* The following styles my alarm selection buttons container */
+#alarmsetcontainer {
+  display: none;
+  padding-top: 70px;
+  padding-left: 10%;
+  padding-right: 10%;
+  margin: 0 auto;
+  overflow-wrap: break-word;
+  text-align: center;
+}
+
+/* Onto the alarm buttons themselves... */
+#alarmsetcontainer button {
+  font-size: calc(0.8vw + 10px);
+  background-color: #ddd;
+  color: black;
+  border-style: solid;
+  border-width: 2px;
+  border-color: dodgerblue;
+}
+
+/* Style mobile alarmbuttons */
+@media only screen and (max-width: 900px) {
+  #alarmsetcontainer {
+    padding-top: 0.8em;
+    padding-left: 1%;
+    padding-right: 1%;
+    text-align: center;
+  }
+  #alarmsetcontainer button {
+    font-size: calc(2vw + 10px);
+  }
+}
+
+/* Most of my positioning is done through the lcars gird. This is just a backbone for main content. */
+.grid-container {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-areas:
+    "ti"
+    "hp"
+    "l";
+}
